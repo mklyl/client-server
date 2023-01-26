@@ -4,23 +4,21 @@ import socket
 is_connected, is_confirmed, is_closed = False, False, False
 pyGUI.theme("DarkAmber")
 font = ("Arial", 13)
-layout = \
-    [
-        [pyGUI.Text('IP', font=font, key='ip'),
-         pyGUI.InputText(pad=((63, 0), (0, 0)), font=font, disabled_readonly_background_color='#2c2825',
+layout = [[pyGUI.Text('IP', font=font, key='ip'),
+          pyGUI.InputText(pad=((63, 0), (0, 0)), font=font, disabled_readonly_background_color='#2c2825',
                          use_readonly_for_disable=True, key='ip_text')],
-        [pyGUI.Text('User', font=font, key='user', visible=False),
-         pyGUI.InputText(pad=((45, 0), (0, 0)), font=font, use_readonly_for_disable=True, key='user_text',
-                         disabled_readonly_background_color='#2c2825', visible=False)],
-        [pyGUI.Text('Password', font=font, key='password', visible=False),
-         pyGUI.InputText(pad=((8, 0), (0, 0)), font=font, use_readonly_for_disable=True, key='password_text',
+          [pyGUI.Text('User', font=font, key='user', visible=False),
+          pyGUI.InputText(pad=((45, 0), (0, 0)), size=(17, 1), font=font, use_readonly_for_disable=True, key='user_text',
+                         disabled_readonly_background_color='#2c2825', visible=False),
+          pyGUI.Text('Password', font=font, key='password', visible=False, pad=((12, 0), (0, 0))),
+          pyGUI.InputText(pad=((8, 0), (0, 0)), font=font, size=(17, 1), use_readonly_for_disable=True, key='password_text',
                          disabled_readonly_background_color='#2c2825', password_char='*', visible=False)],
-        [pyGUI.Text('Command', font=font, key='command', visible=False),
-         pyGUI.InputText(font=font, key='command_text', visible=False)],
-        [pyGUI.Output(font=font, size=(53, 25), key='list', visible=True)],
-        [pyGUI.OK(font=font, key="OK", button_text="Connect"),
-         pyGUI.Button(font=font, button_text="Reset"), pyGUI.Exit(font=font, pad=((10, 0), (0, 0)), button_color="Red")]
-    ]
+          [pyGUI.Text('Command', font=font, key='command', visible=False),
+          pyGUI.InputText(font=font, key='command_text', visible=False)],
+          [pyGUI.Output(font=font, size=(53, 25), key='list')],
+          [pyGUI.OK(font=font, key="OK", button_text="Connect"),
+          pyGUI.Button(font=font, button_text="Reset"), pyGUI.Exit(font=font, pad=((10, 0), (0, 0)), button_color="Red")]
+          ]
 window = pyGUI.Window('Client PSQL', layout)
 sock = socket.socket()
 sock.settimeout(5)
